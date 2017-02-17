@@ -59,7 +59,7 @@ Telegram Group: https://t.me/joinchat/AAAAAAnT8ampUz4vZFw0SQ
 
 ## 关于 日常
 
-日常 是一款由 drakeet 负责推荐和分享各种好玩新鲜的栏目应用，基于 Rebase 服务。
+日常 是一款由 drakeet 负责推荐和分享各种好玩新鲜的栏目应用，基于 Rebase 服务。实际上它脱胎于我的另一个闭源项目，并去除了部分逻辑代码和黑匣子相关内容。因此，截断并重新开始 commits 记录。
 
 ## How to Contribute
 
