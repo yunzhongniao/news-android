@@ -24,7 +24,7 @@ Rebase 采用了极简而精巧的结构、包设计，令每个人都能轻易�
 
 - 代码入手难度极低，源于对于"简单直观、干净清晰"理念的把握和追求
 - styles、layout 文件内容极其规范、有序、分明
-- 基于 MultiType，全局没有新创建任何一个 Adapter 类
+- 基于 [MultiType](https://github.com/drakeet/MultiType)，全局没有新创建任何一个 Adapter 类
 - 没有一股脑的 MVP、MVVM、过分的响应式设计，没有绕来绕去的关系，无招胜有招
 - 格式一丝不苟，不多不少任何一个空格、换行
 - 良好的面向对象关系设定
