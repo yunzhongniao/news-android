@@ -1,6 +1,8 @@
 # Rebase Android ![](https://circleci.com/gh/drakeet/rebase-android.svg?&style=shield&circle-token=ac8640c37e3a5b40715b9f2f0017db9362316066)
 
-![](app/src/main/res/drawable-nodpi/ic_rebase_flat_w192.png)
+![](app/src/main/res/drawable-nodpi/ic_rebase_flat_w192.png) 
+
+<a href='https://play.google.com/store/apps/details?id=com.drakeet.rebase&hl=zh-CN&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='下载应用，请到 Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/zh-cn_badge_web_generic.png' width=200 height=77/></a>
 
 注：本项目还没正式公开或发布，仍然处于建设中。
 
