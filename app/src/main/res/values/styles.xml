@@ -25,7 +25,7 @@
         parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorControlNormal</item>
         <item name="colorControlNormal">@color/colorControlNormal</item>
         <item name="android:windowBackground">@color/window_background</item>
         <item name="android:navigationBarColor"
@@ -51,6 +51,13 @@
 
     <style name="Rebase.AppBarOverlay"
         parent="Theme.AppCompat.Light"/>
+
+    <style name="Rebase.Dialog">
+        <item name="android:paddingStart">@dimen/dialog_content_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/dialog_content_horizontal_padding</item>
+        <item name="android:paddingTop">@dimen/dialog_content_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/dialog_content_vertical_padding</item>
+    </style>
 
     <style name="Widget.Rebase"
         parent="android:Widget"/>

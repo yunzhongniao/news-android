@@ -19,24 +19,17 @@
   ~ along with rebase-android. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<menu
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:id="@android:id/progress"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:gravity="center"
+    android:background="@color/white">
 
-    <item
-        android:id="@+id/action_favorite"
-        android:title="@string/favorite"
-        android:icon="@drawable/ic_action_bookmark"
-        app:showAsAction="ifRoom"/>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-    <item
-        android:id="@+id/action_login"
-        android:title="@string/action_login_in"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/action_about"
-        android:title="@string/about"
-        app:showAsAction="never"/>
-
-</menu>
+</LinearLayout>

@@ -21,6 +21,8 @@
 package com.drakeet.rebase;
 
 import android.app.Application;
+import android.content.Context;
+import bz.tsung.android.objectify.StringPreferenceLoader;
 import com.litesuits.orm.LiteOrm;
 
 /**
@@ -35,5 +37,15 @@ public class Stores {
     static void install(Application application) {
         db = LiteOrm.newCascadeInstance(application, DB_NAME);
         db.setDebugged(BuildConfig.DEBUG);
+    }
+
+
+    public static StringPreferenceLoader stringPreference(Context context, String key) {
+        return new StringPreferenceLoader(context, key);
+    }
+
+
+    public static StringPreferenceLoader token(Context context) {
+        return stringPreference(context, "encrypted_token");
     }
 }

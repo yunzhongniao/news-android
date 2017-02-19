@@ -20,8 +20,9 @@
 
 package com.drakeet.rebase.api;
 
-import com.drakeet.rebase.api.type.Feed;
+import com.drakeet.rebase.api.type.Auth;
 import com.drakeet.rebase.api.type.Category;
+import com.drakeet.rebase.api.type.Feed;
 import java.util.List;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -43,4 +44,7 @@ public interface Rebase {
         @Path("category") String category,
         @Query("last_id") String lastId,
         @Query("size") int size);
+
+    @GET("authorizations/{username}")
+    Observable<Auth> login(@Path("username") String username, @Query("password") String password);
 }

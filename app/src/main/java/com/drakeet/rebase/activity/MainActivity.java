@@ -38,6 +38,7 @@ import com.drakeet.rebase.Stores;
 import com.drakeet.rebase.api.Retrofits;
 import com.drakeet.rebase.api.type.Category;
 import com.drakeet.rebase.fragment.FeedsFragment;
+import com.drakeet.rebase.fragment.LoginFragment;
 import com.drakeet.rebase.tool.AbstractPageChangeListener;
 import com.drakeet.rebase.tool.AbstractTabSelectedListener;
 import com.drakeet.rebase.tool.Analytics;
@@ -70,8 +71,7 @@ public class MainActivity extends ToolbarActivity {
     @Nullable AbstractPageChangeListener onPageChangeListener;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -155,6 +155,9 @@ public class MainActivity extends ToolbarActivity {
 
     @Override public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_login:
+                LoginFragment.newInstance().show(getSupportFragmentManager(), "Login");
+                return true;
             case R.id.action_about:
                 AboutActivity.start(this);
                 return true;

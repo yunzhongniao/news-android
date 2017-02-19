@@ -22,6 +22,7 @@ package com.drakeet.rebase.tool;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
+import android.support.annotation.StringRes;
 import android.widget.Toast;
 
 /**
@@ -40,6 +41,11 @@ public class Toasts {
 
     public static void showShort(String text) {
         Toast.makeText(application, text, Toast.LENGTH_SHORT).show();
+    }
+
+
+    public static void showShort(@StringRes int resId) {
+        showShort(application.getString(resId));
     }
 
 
