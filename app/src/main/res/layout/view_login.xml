@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:hint="@string/prompt_user_name"/>
+                android:hint="@string/prompt_username"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:imeActionId="@+id/login"
-                android:imeActionLabel="@string/action_login_in"
+                android:imeActionLabel="@string/action_login"
                 android:imeOptions="actionUnspecified"
                 android:maxLines="1"
                 android:hint="@string/prompt_password"/>

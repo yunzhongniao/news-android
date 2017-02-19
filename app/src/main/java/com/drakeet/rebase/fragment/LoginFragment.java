@@ -37,6 +37,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.drakeet.rebase.R;
 import com.drakeet.rebase.Stores;
+import com.drakeet.rebase.activity.AdminActivity;
 import com.drakeet.rebase.api.RebaseRetrofit;
 import com.drakeet.rebase.api.Retrofits;
 import com.drakeet.rebase.api.type.Auth;
@@ -87,7 +88,7 @@ public class LoginFragment extends DialogFragment {
         return new AlertDialog.Builder(context)
             .setView(onCreateDialogContentView(savedInstanceState))
             .setTitle(R.string.title_login_in)
-            .setPositiveButton(R.string.action_login_in, null)
+            .setPositiveButton(R.string.action_login, null)
             .setNegativeButton(android.R.string.cancel, null)
             .create();
     }
@@ -140,6 +141,7 @@ public class LoginFragment extends DialogFragment {
                 @Override public void call(Auth auth) {
                     Toasts.showShort(R.string.login_successfully);
                     dialog.dismiss();
+                    AdminActivity.start(context);
                 }
             }, displayErrorAction(context));
     }

@@ -43,9 +43,9 @@
     <!--login-->
     <string name="title_login_in">登陆</string>
     <string name="title_activity_sign_up">Sign Up</string>
-    <string name="prompt_user_name">用户名</string>
+    <string name="prompt_username">用户名</string>
     <string name="prompt_password">密码</string>
-    <string name="action_login_in">登陆</string>
+    <string name="action_login">登陆</string>
     <string name="error_invalid_user_name">This user name is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">The user name or password is incorrect</string>
@@ -54,5 +54,14 @@
     <string name="prompt_re_password">Repeat password</string>
     <string name="sign_up_successful">Sign up successful</string>
     <string name="login_successfully">登陆成功</string>
+
+    <!--admin-->
+    <string name="title_admin">管理后台</string>
+    <string name="prompt_category">category</string>
+    <string name="prompt_title">title</string>
+    <string name="prompt_content">content</string>
+    <string name="prompt_url">url</string>
+    <string name="prompt_cover_url">cover_url</string>
+    <string name="action_post">发布</string>
 
 </resources>
