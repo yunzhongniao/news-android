@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -35,6 +36,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import bz.tsung.android.objectify.NoSuchPreferenceFoundException;
 import com.drakeet.rebase.R;
 import com.drakeet.rebase.Stores;
 import com.drakeet.rebase.activity.AdminActivity;
@@ -56,6 +58,8 @@ import static com.drakeet.rebase.tool.Strings.isNullOrEmpty;
  */
 public class LoginFragment extends DialogFragment {
 
+    private static final String TAG = LoginFragment.class.getSimpleName();
+
     @BindView(R.id.username) AutoCompleteTextView username;
     @BindView(R.id.password) EditText password;
     @BindView(android.R.id.progress) View progressBar;
@@ -74,12 +78,21 @@ public class LoginFragment extends DialogFragment {
     @Override public void onStart() {
         super.onStart();
         final AlertDialog dialog = (AlertDialog) getDialog();
-        final Button login = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        login.setOnClickListener(new View.OnClickListener() {
+        final Button loginButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 onLogin(dialog);
             }
         });
+
+        try {
+            Login login = Stores.login(context).load();
+            username.setText(login.username);
+            password.setText(BlackBoxes.decrypt(context, login.password));
+            onLogin(getDialog());
+        } catch (NoSuchPreferenceFoundException e) {
+            Log.e(TAG, "NoSuchPreferenceFoundException: login");
+        }
     }
 
 
@@ -104,7 +117,7 @@ public class LoginFragment extends DialogFragment {
 
 
     private void onLogin(final DialogInterface dialog) {
-        Login login = new Login();
+        final Login login = new Login();
         login.username = username.getText().toString();
         login.password = password.getText().toString();
         EditText focusView = null;
@@ -126,9 +139,7 @@ public class LoginFragment extends DialogFragment {
             .doOnNext(new Action1<Auth>() {
                 @Override public void call(Auth auth) {
                     RebaseRetrofit.setAuth(auth);
-                    final String token = auth.accessToken;
-                    String encrypted = BlackBoxes.encrypt(context, token);
-                    Stores.token(context).save(encrypted);
+                    saveLogin(login);
                 }
             })
             .observeOn(AndroidSchedulers.mainThread())
@@ -144,6 +155,13 @@ public class LoginFragment extends DialogFragment {
                     AdminActivity.start(context);
                 }
             }, displayErrorAction(context));
+    }
+
+
+    private void saveLogin(Login login) {
+        String encrypted = BlackBoxes.encrypt(context, login.password);
+        Login encryptedLogin = new Login(login.username, encrypted);
+        Stores.login(context).save(encryptedLogin);
     }
 
 

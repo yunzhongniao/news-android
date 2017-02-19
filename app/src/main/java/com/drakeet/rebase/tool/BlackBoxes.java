@@ -73,4 +73,9 @@ public class BlackBoxes {
         }
         return null;
     }
+
+
+    public static String decrypt(Context context, String encrypted) {
+        return decrypt(BlackBoxes.newRebaseBox(context), encrypted);
+    }
 }

@@ -22,7 +22,9 @@ package com.drakeet.rebase;
 
 import android.app.Application;
 import android.content.Context;
+import bz.tsung.android.objectify.ObjectPreferenceLoader;
 import bz.tsung.android.objectify.StringPreferenceLoader;
+import com.drakeet.rebase.api.type.Login;
 import com.litesuits.orm.LiteOrm;
 
 /**
@@ -42,6 +44,11 @@ public class Stores {
 
     public static StringPreferenceLoader stringPreference(Context context, String key) {
         return new StringPreferenceLoader(context, key);
+    }
+
+
+    public static ObjectPreferenceLoader login(Context context) {
+        return new ObjectPreferenceLoader(context, "encrypted_login", Login.class);
     }
 
 
