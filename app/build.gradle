@@ -30,8 +30,8 @@ android {
         applicationId "com.drakeet.rebase"
         minSdkVersion 18 /* 4.3+ */
         targetSdkVersion 25
-        versionCode 1
-        versionName "0.9.9"
+        versionCode 99
+        versionName "0.9.10"
         manifestPlaceholders = [UMENG_CHANNEL_VALUE: "GooglePlay"]
         addManifestPlaceholders([APP_NAME: "@string/rebase_name"])
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
