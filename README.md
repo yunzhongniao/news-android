@@ -55,7 +55,7 @@ WordPress 是一款自由开源的博客软件和内容管理系统，它帮助�
 
 这个应用程序是 Rebase 项目的客户端之一，它是完全开源的，包括客户端源代码、服务端源代码，以及即将开源的 Sketch 设计稿源文件，如果你很喜欢它，就加入进来吧！
 
-Telegram Group: https://t.me/joinchat/AAAAAAnT8ampUz4vZFw0SQ
+Telegram Group: https://t.me/joinchat/AAAAAEIwgt5yDl0Ffb6jOQ
 
 ## 关于 日常
 
