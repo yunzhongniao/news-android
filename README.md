@@ -63,7 +63,7 @@ Telegram Group: https://t.me/joinchat/AAAAAEIwgt5yDl0Ffb6jOQ
 
 ## How to Contribute
 
-请使用 **DrakeetAndroid([drakeet_style.zip](code_style.zip))** 代码风格配置文件，以保持统一。提交 Pull Request 请确保你的格式没有任何问题，包括该有的各种空格。
+请使用 **DrakeetAndroid([drakeet_style.zip](drakeet_style.zip))** 代码风格配置文件，以保持统一。提交 Pull Request 请确保你的格式没有任何问题，包括该有的各种空格。
 
 ## 其他
 
