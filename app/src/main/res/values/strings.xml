@@ -63,5 +63,6 @@
     <string name="prompt_url">url</string>
     <string name="prompt_cover_url">cover_url</string>
     <string name="action_post">发布</string>
+    <string name="has_posted_at">已发布于：</string>
 
 </resources>

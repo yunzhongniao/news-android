@@ -25,9 +25,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import com.drakeet.rebase.Configs;
 import com.drakeet.rebase.R;
+import com.drakeet.rebase.api.Retrofits;
+import com.drakeet.rebase.api.type.Feed;
+import com.drakeet.rebase.tool.TimeDesc;
+import com.drakeet.rebase.tool.Toasts;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+
+import static com.drakeet.rebase.tool.ErrorHandlers.displayErrorAction;
+import static com.drakeet.rebase.tool.Strings.emptyToNull;
 
 public class AdminActivity extends ToolbarActivity {
+
+    @BindView(R.id.category) AutoCompleteTextView categoryView;
+    @BindView(R.id.title) EditText title;
+    @BindView(R.id.url) EditText url;
+    @BindView(R.id.cover_url) EditText coverUrl;
+    @BindView(R.id.content) EditText content;
+
 
     public static void start(Context context) {
         Intent intent = new Intent(context, AdminActivity.class);
@@ -39,6 +60,28 @@ public class AdminActivity extends ToolbarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        ButterKnife.bind(this);
+    }
+
+
+    private void onPost() {
+        String category = categoryView.getText().toString();
+        Feed feed = new Feed();
+        feed.title = emptyToNull(title.getText().toString());
+        feed.url = emptyToNull(url.getText().toString());
+        feed.coverUrl = emptyToNull(coverUrl.getText().toString());
+        feed.content = emptyToNull(content.getText().toString());
+
+        Retrofits.rebase().newFeed(Configs.USERNAME, category, feed)
+            .compose(this.<Feed>bindToLifecycle())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Action1<Feed>() {
+                @Override public void call(Feed feed) {
+                    Toasts.showShort(getString(R.string.has_posted_at) +
+                        TimeDesc.gsonFormat(feed.publishedAt));
+                    AdminActivity.this.finish();
+                }
+            }, displayErrorAction(this));
     }
 
 
@@ -51,6 +94,7 @@ public class AdminActivity extends ToolbarActivity {
     @Override public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_post:
+                onPost();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

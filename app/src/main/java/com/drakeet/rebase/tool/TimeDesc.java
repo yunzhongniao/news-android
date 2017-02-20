@@ -20,6 +20,7 @@
 
 package com.drakeet.rebase.tool;
 
+import com.drakeet.rebase.api.RebaseRetrofit;
 import java.util.Date;
 import org.ocpsoft.prettytime.PrettyTime;
 
@@ -36,5 +37,10 @@ public class TimeDesc {
 
     public static String format(final Date date) {
         return prettyTime.format(date).replace(" 前", "前").replace(" 后", "后");
+    }
+
+
+    public static String gsonFormat(Date date) {
+        return RebaseRetrofit.GSON.toJson(date);
     }
 }

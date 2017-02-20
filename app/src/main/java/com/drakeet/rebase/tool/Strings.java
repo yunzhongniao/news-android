@@ -38,4 +38,15 @@ public class Strings {
     public static boolean notNullAndEmpty(@Nullable String string) {
         return !isNullOrEmpty(string);
     }
+
+
+    /**
+     * Returns the given string if it is nonempty; {@code null} otherwise.
+     *
+     * @param string the string to transform and possibly return
+     * @return {@code string} itself if it is nonempty; {@code null} if it is empty or null
+     */
+    @Nullable public static String emptyToNull(@Nullable String string) {
+        return isNullOrEmpty(string) ? null : string;
+    }
 }

@@ -70,8 +70,8 @@ public class RebaseRetrofit {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request original = chain.request();
-
                 Request.Builder builder = original.newBuilder();
+                builder.addHeader("Content-Type", "application/json; charset=utf-8");
                 if (auth != null) {
                     builder.addHeader("Authorization", "token " + auth.accessToken);
                 }

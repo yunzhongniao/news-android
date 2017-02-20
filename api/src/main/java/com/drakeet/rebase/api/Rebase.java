@@ -24,7 +24,9 @@ import com.drakeet.rebase.api.type.Auth;
 import com.drakeet.rebase.api.type.Category;
 import com.drakeet.rebase.api.type.Feed;
 import java.util.List;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -47,4 +49,9 @@ public interface Rebase {
 
     @GET("authorizations/{username}")
     Observable<Auth> login(@Path("username") String username, @Query("password") String password);
+
+    @POST("categories/{username}/{category}/feeds")
+    Observable<Feed> newFeed(
+        @Path("username") String username,
+        @Path("category") String category, @Body Feed feed);
 }
