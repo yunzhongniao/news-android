@@ -73,13 +73,13 @@ public class FeedBrowserActivity extends WebActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.feed_browser, menu);
-        MenuItem item = menu.findItem(R.id.action_favorite);
-        initFavoriteItemState(item);
+        initFavoriteItemState(menu);
         return super.onCreateOptionsMenu(menu);
     }
 
 
-    private void initFavoriteItemState(MenuItem item) {
+    private void initFavoriteItemState(Menu menu) {
+        MenuItem item = menu.findItem(R.id.action_favorite);
         item.setChecked(initialCheckState);
     }
 

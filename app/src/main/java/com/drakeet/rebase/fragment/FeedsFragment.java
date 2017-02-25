@@ -134,7 +134,7 @@ public class FeedsFragment extends ListBaseFragment {
 
 
     @Override protected boolean onInterceptLoadMore() {
-        if (!isRequestDataRefresh()) {
+        if (!isLoading()) {
             lastId = ((Feed) items.get(items.size() - 1))._id;
             loadDataFromRemote(false);
             Analytics.of(getContext()).logEvent("LoadMore");

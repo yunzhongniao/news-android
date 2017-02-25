@@ -43,7 +43,6 @@ import com.drakeet.rebase.tool.AbstractPageChangeListener;
 import com.drakeet.rebase.tool.AbstractTabSelectedListener;
 import com.drakeet.rebase.tool.Analytics;
 import com.litesuits.orm.db.assit.QueryBuilder;
-import com.umeng.analytics.MobclickAgent;
 import java.util.List;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -66,7 +65,6 @@ public class MainActivity extends ToolbarActivity {
     MainPagerAdapter pagerAdapter;
     List<Category> categories;
 
-    @Nullable Category lastSelectedCategory;
     @Nullable AbstractTabSelectedListener onTabSelectedListener;
     @Nullable AbstractPageChangeListener onPageChangeListener;
 
@@ -77,7 +75,11 @@ public class MainActivity extends ToolbarActivity {
         ButterKnife.bind(this);
         setDoubleClickToExitEnabled(false);
         setDisplayShowTitleEnabled(false);
+        loadCategories();
+    }
 
+
+    private void loadCategories() {
         List<Category> categoryCaches = Stores.db.single()
             .query(QueryBuilder.create(Category.class).orderBy("rank"));
         final boolean existCaches = (categoryCaches.size() > 0);
@@ -137,13 +139,7 @@ public class MainActivity extends ToolbarActivity {
 
 
     private void onPageChanged(int position) {
-        Log.d(TAG, "[3800]" + position);
-        if (lastSelectedCategory != null) {
-            MobclickAgent.onPageEnd(lastSelectedCategory.name);
-        }
-        Category currentCategory = categories.get(position);
-        MobclickAgent.onPageStart(currentCategory.name);
-        lastSelectedCategory = currentCategory;
+        Log.d(TAG, "[onPageChanged]" + position);
     }
 
 

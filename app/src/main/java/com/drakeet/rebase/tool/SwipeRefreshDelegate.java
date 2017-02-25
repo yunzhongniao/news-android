@@ -35,7 +35,6 @@ public class SwipeRefreshDelegate {
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
 
-    private boolean isRequestDataRefresh = false;
     private OnSwipeRefreshListener providedListener;
 
 
@@ -67,7 +66,6 @@ public class SwipeRefreshDelegate {
             swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override public void onRefresh() {
                     providedListener.onSwipeRefresh();
-                    isRequestDataRefresh = true;
                 }
             });
         }
@@ -79,8 +77,6 @@ public class SwipeRefreshDelegate {
             return;
         }
         if (!requestDataRefresh) {
-            isRequestDataRefresh = false;
-            // 防止刷新消失太快，让子弹飞一会儿.
             swipeRefreshLayout.postDelayed(new Runnable() {
                 @Override public void run() {
                     if (swipeRefreshLayout != null) {
@@ -104,11 +100,6 @@ public class SwipeRefreshDelegate {
 
     public boolean isShowingRefresh() {
         return swipeRefreshLayout.isRefreshing();
-    }
-
-
-    public boolean isRequestDataRefresh() {
-        return isRequestDataRefresh;
     }
 
 

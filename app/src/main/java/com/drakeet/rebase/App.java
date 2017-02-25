@@ -36,6 +36,5 @@ public class App extends Application {
         Toasts.install(this);
         RebaseRetrofit.debug = BuildConfig.DEBUG;
         MobclickAgent.setCatchUncaughtExceptions(true);
-        MobclickAgent.openActivityDurationTrack(false);
     }
 }

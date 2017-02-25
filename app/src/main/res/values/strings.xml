@@ -27,6 +27,8 @@
     <string name="favorite">收藏</string>
     <string name="undo_favorite">取消收藏</string>
     <string name="show_more">显示更多</string>
+    <string name="ok">@android:string/ok</string>
+    <string name="cancel">@android:string/cancel</string>
 
     <!--about-->
     <string name="about">关于</string>

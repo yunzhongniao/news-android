@@ -98,7 +98,7 @@ public abstract class ListBaseFragment extends BaseFragment
 
     @Override public final void onLoadMore() {
         if (!isEnd()) {
-            Log.d(TAG, "[3801]");
+            Log.d(TAG, "[onLoadMore]" + "isEnd == false");
             if (!onInterceptLoadMore()) {
                 loadData(false);
             }
@@ -108,11 +108,6 @@ public abstract class ListBaseFragment extends BaseFragment
 
     protected boolean isShowingRefresh() {
         return refreshDelegate.isShowingRefresh();
-    }
-
-
-    public boolean isRequestDataRefresh() {
-        return refreshDelegate.isRequestDataRefresh();
     }
 
 
