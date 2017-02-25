@@ -76,16 +76,6 @@ public class Colorful {
     }
 
 
-    private static int getStyleByName(String styleName) {
-        for (int i = 0; i < STYLE_NAMES.length; i++) {
-            if (STYLE_NAMES[i].equals(styleName)) {
-                return i;
-            }
-        }
-        return 0;
-    }
-
-
     public static Colorful of(Activity activity) {
         return new Colorful(activity);
     }
@@ -95,5 +85,15 @@ public class Colorful {
         String styleName = STYLE_NAMES[styleIndex % STYLES.length];
         styleIndex++;
         return new Theme(styleName);
+    }
+
+
+    private static int getStyleByName(String styleName) {
+        for (int i = 0; i < STYLE_NAMES.length; i++) {
+            if (STYLE_NAMES[i].equals(styleName)) {
+                return i;
+            }
+        }
+        return 0;
     }
 }
