@@ -117,7 +117,7 @@ public class MainActivity extends ToolbarActivity {
         viewPager.setOffscreenPageLimit(categories.size());
         onPageChangeListener = new AbstractPageChangeListener() {
             @Override public void onPageSelected(int position) {
-                MainActivity.this.onPageChanged(position);
+                onPageChanged(position);
             }
         };
         viewPager.clearOnPageChangeListeners();
@@ -130,7 +130,8 @@ public class MainActivity extends ToolbarActivity {
         onTabSelectedListener = new AbstractTabSelectedListener() {
             @Override public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition(), false);
-                Analytics.of(MainActivity.this).logEvent("TabClick");
+                String tabName = categories.get(tab.getPosition()).name;
+                Analytics.of(context()).logEvent("TabSelected", "tab", tabName);
             }
         };
         tabLayout.clearOnTabSelectedListeners();
