@@ -30,8 +30,8 @@ android {
         applicationId "com.drakeet.rebase"
         minSdkVersion 18 /* 4.3+ */
         targetSdkVersion 25
-        versionCode 99
-        versionName "0.9.10"
+        versionCode 101
+        versionName "0.9.11"
         manifestPlaceholders = [UMENG_CHANNEL_VALUE: "GooglePlay"]
         addManifestPlaceholders([APP_NAME: "@string/rebase_name"])
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -120,10 +120,10 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.android.support:support-annotations:25.1.1'
-    compile 'com.android.support:recyclerview-v7:25.1.1'
-    compile 'com.android.support:design:25.1.1'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:support-annotations:25.2.0'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
