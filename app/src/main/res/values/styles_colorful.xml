@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2017 Drakeet <drakeet.me@gmail.com>
+  ~
+  ~ This file is part of rebase-android
+  ~
+  ~ rebase-android is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ rebase-android is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  ~
+  ~ See the GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with rebase-android. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Rebase.Colorful"/>
+
+    <color name="dark_magenta">#3E3959</color>
+
+    <style name="Rebase.Colorful.DarkMagenta">
+        <item name="colorPrimaryDark">#282539</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="toolbarBackground">@color/dark_magenta</item>
+        <item name="toolbarTextColor">@android:color/white</item>
+        <item name="toolbarMenuTint">@android:color/white</item>
+        <item name="tabIndicatorColor">@android:color/white</item>
+        <item name="tabBackground">@color/dark_magenta</item>
+        <item name="tabTextColor">@android:color/white</item>
+        <item name="overflowHeaderColor">@color/dark_magenta</item>
+        <item name="android:windowLightStatusBar"
+            tools:targetApi="m">false
+        </item>
+    </style>
+</resources>

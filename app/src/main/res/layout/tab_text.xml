@@ -19,10 +19,12 @@
   ~ along with rebase-android. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.Rebase.MainPage.NormalTab"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:textSize="17sp"
+    tools:textSize="@dimen/tab_text_size"
+    android:textColor="?attr/tabTextColor"
     tools:text="科技资讯"/>

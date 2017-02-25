@@ -30,6 +30,9 @@
     <string name="ok">@android:string/ok</string>
     <string name="cancel">@android:string/cancel</string>
 
+    <!--main-->
+    <string name="action_change_theme">换肤</string>
+
     <!--about-->
     <string name="about">关于</string>
     <string name="share">分享</string>

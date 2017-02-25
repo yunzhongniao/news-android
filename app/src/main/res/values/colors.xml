@@ -21,10 +21,13 @@
 
 <resources>
 
+    <color name="colorPrimaryDark_below_23">#000000</color>
+    <color name="colorPrimaryDark_23">#ededed</color>
+
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryLite">#bf000000</color>
     <color name="window_background">#f1f1f1</color>
-    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryDark">@color/colorPrimaryDark_below_23</color>
     <color name="colorControlNormal">#000000</color>
     <color name="colorAccent">#123123</color>
     <color name="immersive_bars">#ff292929</color>
@@ -40,11 +43,19 @@
 
     <color name="about_activity_background">#432e2a</color>
 
-    <color name="tab_indicator_color">#de000000</color>
     <color name="ripple_mask">#90ffffff</color>
     <color name="item_selected">#90ffffff</color>
-    <color name="item_normal">@color/colorPrimary</color>
+    <color name="item_normal">@color/white</color>
     <color name="scrollbar">#48000000</color>
     <color name="logo_border">#ededed</color>
-    
+
+    <!--default colorful-->
+    <color name="toolbarBackground">@color/white</color>
+    <color name="toolbarTextColor">@android:color/black</color>
+    <color name="toolbarMenuTint">@android:color/black</color>
+    <color name="tabIndicatorColor">@android:color/black</color>
+    <color name="tabBackground">@color/toolbarBackground</color>
+    <color name="tabTextColor">@color/toolbarTextColor</color>
+    <color name="overflowHeaderColor">@color/window_background</color>
+
 </resources>

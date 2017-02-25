@@ -20,5 +20,14 @@
   -->
 
 <resources>
-    <color name="colorPrimaryDark">@color/colorPrimaryDark_23</color>
+
+    <!--@formatter:off-->
+    <attr name="toolbarBackground" format="reference"/>
+    <attr name="toolbarTextColor" format="color"/>
+    <attr name="toolbarMenuTint" format="color"/>
+    <!--<attr name="tabIndicatorColor"/>-->
+    <!--<attr name="tabBackground"/>-->
+    <attr name="tabTextColor" format="color"/>
+    <attr name="overflowHeaderColor" format="color"/>
+
 </resources>

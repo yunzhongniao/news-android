@@ -33,6 +33,7 @@
     <dimen name="list_view_space_top">14dp</dimen>
 
     <dimen name="tab_height">42dp</dimen>
+    <dimen name="tab_text_size">17sp</dimen>
     <dimen name="page_margin">10dp</dimen>
 
     <dimen name="slider_padding">16dp</dimen>

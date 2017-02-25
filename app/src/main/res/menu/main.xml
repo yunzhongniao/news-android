@@ -30,6 +30,11 @@
         app:showAsAction="ifRoom"/>
 
     <item
+        android:id="@+id/action_change_theme"
+        android:title="@string/action_change_theme"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/action_login"
         android:title="@string/action_login"
         app:showAsAction="never"/>

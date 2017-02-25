@@ -20,14 +20,16 @@
 
 package com.drakeet.rebase.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -39,8 +41,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 暂时仅适用于白色 tab layout，有优化空间
- *
  * @author drakeet
  */
 public class CompactTabLayout extends TabLayout {
@@ -65,11 +65,16 @@ public class CompactTabLayout extends TabLayout {
     }
 
 
+    @SuppressLint("PrivateResource")
     public CompactTabLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TabLayout,
+            defStyleAttr, R.style.Widget_Design_TabLayout);
+        int tabBackgroundResId = a.getResourceId(R.styleable.TabLayout_tabBackground, 0);
+        a.recycle();
         INDICATOR_HEIGHT = dpToPx(2);
         hoverPaint = new Paint();
-        hoverPaint.setColor(Color.WHITE);
+        hoverPaint.setColor(ContextCompat.getColor(context, tabBackgroundResId));
         hoverPaint.setStyle(Paint.Style.FILL);
         tabViews = new ArrayList<>(tabCount);
     }

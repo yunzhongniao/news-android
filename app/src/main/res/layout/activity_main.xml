@@ -25,10 +25,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:background="?attr/overflowHeaderColor"/>
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/tabBackground">
 
         <include layout="@layout/toolbar_main"/>
 
@@ -37,7 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/toolbar"
-            app:tabIndicatorColor="@color/tab_indicator_color"
+            app:tabBackground="?attr/tabBackground"
+            app:tabIndicatorColor="?attr/tabIndicatorColor"
             app:tabGravity="fill"
             app:tabMode="scrollable"
             tools:ignore="UnknownId"/>
