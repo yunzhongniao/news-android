@@ -21,8 +21,10 @@
 
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:ignore="Deprecated">
 
     <LinearLayout
         style="@style/Rebase.Dialog"
@@ -38,7 +40,8 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
                 android:hint="@string/prompt_username"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -54,8 +57,8 @@
                 android:inputType="textPassword"
                 android:imeActionId="@+id/login"
                 android:imeActionLabel="@string/action_login"
-                android:imeOptions="actionUnspecified"
-                android:maxLines="1"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
                 android:hint="@string/prompt_password"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -65,4 +68,3 @@
     <include layout="@layout/view_progress"/>
 
 </FrameLayout>
-
