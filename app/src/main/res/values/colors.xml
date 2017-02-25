@@ -44,7 +44,7 @@
     <color name="about_activity_background">#432e2a</color>
 
     <color name="ripple_mask">#90ffffff</color>
-    <color name="item_selected">#90ffffff</color>
+    <color name="item_selected">#f2f2f2</color>
     <color name="item_normal">@color/white</color>
     <color name="scrollbar">#48000000</color>
     <color name="logo_border">#ededed</color>
