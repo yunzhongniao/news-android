@@ -22,6 +22,7 @@ package com.liuguangqiang.swipeback;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.view.ScrollingView;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.ViewDragHelper;
@@ -95,7 +96,7 @@ public class SwipeBackLayout extends ViewGroup {
     /**
      * Whether allow to pull this layout.
      */
-    private boolean enablePullToBack = true;
+    private boolean swipeBackEnabled = true;
 
     private static final float BACK_FACTOR = 0.05f;
 
@@ -113,14 +114,14 @@ public class SwipeBackLayout extends ViewGroup {
     }
 
 
-    private boolean enableFlingBack = true;
+    private boolean flingBackEnabled = true;
 
 
     /**
      * Whether allow to finish activity by fling the layout.
      */
-    public void setEnableFlingBack(boolean b) {
-        enableFlingBack = b;
+    public void setFlingBackEnabled(boolean enabled) {
+        flingBackEnabled = enabled;
     }
 
 
@@ -155,8 +156,8 @@ public class SwipeBackLayout extends ViewGroup {
     }
 
 
-    public void setEnablePullToBack(boolean b) {
-        enablePullToBack = b;
+    public void setSwipeBackEnabled(boolean enabled) {
+        swipeBackEnabled = enabled;
     }
 
 
@@ -174,7 +175,6 @@ public class SwipeBackLayout extends ViewGroup {
                 } else {
                     scrollChild = target;
                 }
-
             }
         }
     }
@@ -190,8 +190,11 @@ public class SwipeBackLayout extends ViewGroup {
             View child;
             for (int i = 0; i < count; i++) {
                 child = viewGroup.getChildAt(i);
-                if (child instanceof AbsListView || child instanceof ScrollView ||
-                    child instanceof ViewPager || child instanceof WebView) {
+                if (child instanceof ScrollingView ||
+                    child instanceof AbsListView ||
+                    child instanceof ScrollView ||
+                    child instanceof ViewPager ||
+                    child instanceof WebView) {
                     scrollChild = child;
                     return;
                 }
@@ -343,7 +346,7 @@ public class SwipeBackLayout extends ViewGroup {
 
         @Override
         public boolean tryCaptureView(View child, int pointerId) {
-            return child == target && enablePullToBack;
+            return child == target && swipeBackEnabled;
         }
 
 
@@ -461,7 +464,7 @@ public class SwipeBackLayout extends ViewGroup {
 
             boolean isBack = false;
 
-            if (enableFlingBack && backBySpeed(xvel, yvel)) {
+            if (flingBackEnabled && backBySpeed(xvel, yvel)) {
                 isBack = true;
             } else if (draggingOffset >= finishAnchor) {
                 isBack = true;

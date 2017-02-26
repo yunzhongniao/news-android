@@ -69,4 +69,9 @@ public class SwipeBackDelegate implements SwipeBackLayout.SwipeBackListener {
     public void onViewPositionChanged(float fractionAnchor, float fractionScreen) {
         shadow.setAlpha(1 - fractionScreen);
     }
+
+
+    public void setSwipeBackEnabled(boolean enabled) {
+        swipeBackLayout.setSwipeBackEnabled(enabled);
+    }
 }

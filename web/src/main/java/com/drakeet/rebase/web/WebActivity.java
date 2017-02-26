@@ -43,6 +43,8 @@ import com.liuguangqiang.swipeback.SwipeBackLayout.DragEdge;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.widget.Toast.makeText;
+
 public class WebActivity extends ToolbarActivity
     implements ObservableWebView.OnScrollChangedListener {
 
@@ -60,6 +62,8 @@ public class WebActivity extends ToolbarActivity
     String url, title;
     int positionHolder;
     boolean overrideTitleEnabled = true;
+
+    SwipeBackDelegate swipeBackDelegate;
 
 
     /**
@@ -81,7 +85,7 @@ public class WebActivity extends ToolbarActivity
     @Override protected void onCreate(Bundle savedInstanceState) {
         overridePendingTransition(0, 0);
         super.onCreate(savedInstanceState);
-        SwipeBackDelegate swipeBackDelegate = new SwipeBackDelegate();
+        swipeBackDelegate = new SwipeBackDelegate();
         swipeBackDelegate.attach(this, R.layout.web_activity_web);
         swipeBackDelegate.setDragEdge(DragEdge.VERTICAL);
         /* setContentView(R.layout.web_activity_web); */
@@ -103,6 +107,7 @@ public class WebActivity extends ToolbarActivity
         webView.setWebChromeClient(new ChromeClient());
         webView.setWebViewClient(new ReloadableClient());
         webView.setOnScrollChangedListener(this);
+        // webView.addJavascriptInterface(new JSInterface(), "JSInterface");
 
         webView.loadUrl(url);
 
@@ -172,14 +177,14 @@ public class WebActivity extends ToolbarActivity
             return true;
         } else if (id == R.id.action_copy_url) {
             ClipBoards.copyToClipBoard(this, webView.getUrl());
-            Toast.makeText(this, R.string.web_tip_copy_done, Toast.LENGTH_SHORT).show();
+            makeText(this, R.string.web_tip_copy_done, Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.action_open_url) {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
             } else {
-                Toast.makeText(this, R.string.web_tip_open_fail, Toast.LENGTH_LONG).show();
+                makeText(this, R.string.web_tip_open_fail, Toast.LENGTH_LONG).show();
             }
             return true;
         }
@@ -248,6 +253,26 @@ public class WebActivity extends ToolbarActivity
             Integer _position = URL_POSITION_CACHES.get(url);
             int position = _position == null ? 0 : _position;
             view.scrollTo(0, position);
+        }
+
+
+        @Override public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            boolean isBlackPage = false;
+            for (String blackKey : SwipeBlacklist.get()) {
+                if (url.contains(blackKey)) {
+                    isBlackPage = true;
+                    break;
+                }
+            }
+            if (isBlackPage) {
+                Toast.makeText(WebActivity.this,
+                    R.string.web_tip_swipe_back_disabled, Toast.LENGTH_LONG)
+                    .show();
+                swipeBackDelegate.setSwipeBackEnabled(false);
+            } else {
+                swipeBackDelegate.setSwipeBackEnabled(true);
+            }
         }
     }
 }

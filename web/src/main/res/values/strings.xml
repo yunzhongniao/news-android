@@ -26,4 +26,5 @@
 
     <string name="web_tip_copy_done">复制成功</string>
     <string name="web_tip_open_fail">打开失败，没有找到可以打开该链接的其它应用 :(</string>
+    <string name="web_tip_swipe_back_disabled">当前页面不支持底部滑动返回，已临时禁用</string>
 </resources>
