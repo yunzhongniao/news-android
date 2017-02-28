@@ -74,6 +74,7 @@
     long producerNode;
     long consumerNode;
 }
+-dontwarn rx.internal.**
 
 # v7
 -keep public class android.support.v7.widget.** { *; }
@@ -92,9 +93,11 @@
 -dontwarn retrofit2.Platform$Java8
 # Retain declared checked exceptions for use by a Proxy instance.
 -keepattributes Exceptions
+-dontwarn retrofit2.adapter.rxjava.**
 
 # okhttp
 -dontwarn com.squareup.okhttp.**
+-dontwarn okio.**
 
 # log
 -assumenosideeffects class android.util.Log {
