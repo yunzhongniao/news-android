@@ -42,7 +42,7 @@ public class FeedBrowserActivity extends WebActivity {
 
 
     public static Intent newIntent(Context context, Feed feed) {
-        Intent intent = WebActivity.newIntent(context, feed.url, feed.title);
+        Intent intent = WebActivity.newIntent(context, feed.title, feed.url);
         intent.setClass(context, FeedBrowserActivity.class);
         intent.putExtra(EXTRA_FEED_ID, feed._id);
         intent.putExtra(EXTRA_FEED_TITLE, feed.title);

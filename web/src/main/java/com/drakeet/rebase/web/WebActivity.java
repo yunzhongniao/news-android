@@ -73,10 +73,10 @@ public class WebActivity extends ToolbarActivity
      *
      * @return Intent to start WebActivity
      */
-    public static Intent newIntent(Context context, String extraURL, String extraTitle) {
+    public static Intent newIntent(Context context, String extraTitle, String extraURL) {
         Intent intent = new Intent(context, WebActivity.class);
-        intent.putExtra(EXTRA_URL, extraURL);
         intent.putExtra(EXTRA_TITLE, extraTitle);
+        intent.putExtra(EXTRA_URL, extraURL);
         return intent;
     }
 
