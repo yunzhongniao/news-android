@@ -74,7 +74,7 @@ public class ToolbarActivity extends BaseActivity {
     public void setDisplayShowTitleEnabled(boolean enabled) {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(enabled);
         }
     }
 }
