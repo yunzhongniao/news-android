@@ -36,12 +36,11 @@ import com.drakeet.rebase.activity.FeedBrowserActivity;
 import com.drakeet.rebase.api.type.Feed;
 import com.drakeet.rebase.tool.Analytics;
 import com.drakeet.rebase.tool.Icons;
+import com.drakeet.rebase.tool.MapBuilder;
 import com.drakeet.rebase.tool.Strings;
 import com.drakeet.rebase.tool.TimeDesc;
 import com.drakeet.rebase.tool.guava.Optional;
 import de.hdodenhof.circleimageview.CircleImageView;
-import java.util.HashMap;
-import java.util.Map;
 import me.drakeet.multitype.ItemViewProvider;
 
 /**
@@ -109,16 +108,13 @@ public class FeedViewProvider
             if (view == itemView && Strings.notNullAndEmpty(feed.url)) {
                 Intent intent = FeedBrowserActivity.newIntent(context, feed);
                 context.startActivity(intent);
-                logEvent(context, feed._id, feed.title, "FeedClick");
+                Analytics.of(context).logEvent("FeedClick",
+                    new MapBuilder("_id", feed._id)
+                        .append("title", feed.title)
+                        .append("category", feed.category)
+                        .build()
+                );
             }
-        }
-
-
-        void logEvent(Context context, String _id, String title, String event) {
-            Map<String, String> map = new HashMap<>();
-            map.put("_id", _id);
-            map.put("title", title);
-            Analytics.of(context).logEvent(event, map);
         }
     }
 }
