@@ -21,6 +21,7 @@
 package com.drakeet.rebase.tool;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import com.drakeet.rebase.R;
@@ -40,8 +41,6 @@ public class Colorful {
         R.style.Rebase,
         R.style.Rebase_Colorful_DarkMagenta
     };
-    // TODO: 2017/2/25 static
-    private static int styleIndex = 1;
     private Activity activity;
 
 
@@ -50,12 +49,12 @@ public class Colorful {
     }
 
 
-    public class Theme {
+    @SuppressWarnings("WeakerAccess") public class Theme {
 
         String styleName;
 
 
-        public Theme(String styleName) {
+        Theme(String styleName) {
             this.styleName = styleName;
         }
 
@@ -69,9 +68,8 @@ public class Colorful {
 
 
     public static void init(Activity activity) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
-        String styleName = preferences.getString(KEY_STYLE_NAME, STYLE_NAMES[0]);
-        int styleId = STYLES[getStyleByName(styleName)];
+        String styleName = getCurrentStyleName(activity);
+        int styleId = STYLES[getStyleIndexByName(styleName)];
         activity.setTheme(styleId);
     }
 
@@ -82,13 +80,20 @@ public class Colorful {
 
 
     public Theme changeOne() {
-        String styleName = STYLE_NAMES[styleIndex % STYLES.length];
+        int styleIndex = getStyleIndexByName(getCurrentStyleName(activity));
         styleIndex++;
+        String styleName = STYLE_NAMES[styleIndex % STYLES.length];
         return new Theme(styleName);
     }
 
 
-    private static int getStyleByName(String styleName) {
+    private static String getCurrentStyleName(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(KEY_STYLE_NAME, STYLE_NAMES[0]);
+    }
+
+
+    private static int getStyleIndexByName(String styleName) {
         for (int i = 0; i < STYLE_NAMES.length; i++) {
             if (STYLE_NAMES[i].equals(styleName)) {
                 return i;
