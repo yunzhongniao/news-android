@@ -54,7 +54,7 @@ public class AboutActivity extends AbsAboutActivity {
     @SuppressWarnings("deprecation") @SuppressLint("SetTextI18n")
     @Override protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
         setHeaderContentColor(getResources().getColor(R.color.textColorPrimary));
-        setNavigationIcon(R.drawable.ic_close_black_24dp);
+        setNavigationIcon(R.drawable.web_ic_close_black_24dp);
         icon.setImageResource(R.drawable.ic_rebase_flat_w192);
         slogan.setText(R.string.slogan);
         version.setText("v" + BuildConfig.VERSION_NAME);

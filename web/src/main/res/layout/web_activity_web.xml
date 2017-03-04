@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         app:contentInsetStartWithNavigation="0dp"
-        app:navigationIcon="@drawable/ic_close_black_24dp"
+        app:navigationIcon="@drawable/web_ic_close_black_24dp"
         app:popupTheme="@style/WebAppTheme.PopupOverlay">
 
         <TextSwitcher
