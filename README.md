@@ -13,7 +13,7 @@
 - Sketch 设计稿源文件: 即将开源
 - rebase-ios: 即将开源
 
-![](http://ww1.sinaimg.cn/large/86e2ff85gy1fcrj326ngyj218i0x0102)
+![](http://ww1.sinaimg.cn/large/86e2ff85gy1fdccxv0xlzj215q0ucqda)
 
 ## 结构
 
