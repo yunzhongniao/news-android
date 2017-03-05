@@ -20,22 +20,18 @@
 
 package com.drakeet.rebase.tool;
 
-import rx.Observable;
-import rx.subjects.PublishSubject;
-import rx.subjects.SerializedSubject;
-import rx.subjects.Subject;
+import io.reactivex.Observable;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * @author drakeet
  */
 public class RxBus {
 
-    private final Subject<Object, Object> bus = new SerializedSubject<>(PublishSubject.create());
-
-    private static final RxBus BUS = new RxBus();
+    private final PublishSubject<Object> bus = PublishSubject.create();
 
 
-    public static RxBus singleton() {return BUS;}
+    public static RxBus singleton() { return LazyLoad.BUS; }
 
 
     public boolean hasObservers() {
@@ -43,12 +39,17 @@ public class RxBus {
     }
 
 
-    public void post(Object o) {
+    public void post(final Object o) {
         bus.onNext(o);
     }
 
 
     public Observable<Object> toObservable() {
         return bus;
+    }
+
+
+    private static class LazyLoad {
+        static final RxBus BUS = new RxBus();
     }
 }

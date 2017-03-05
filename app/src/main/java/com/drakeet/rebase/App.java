@@ -24,6 +24,9 @@ import android.app.Application;
 import com.drakeet.rebase.api.RebaseRetrofit;
 import com.drakeet.rebase.tool.Toasts;
 import com.umeng.analytics.MobclickAgent;
+import io.reactivex.plugins.RxJavaPlugins;
+
+import static com.drakeet.rebase.tool.ErrorHandlers.displayErrorConsumer;
 
 /**
  * @author drakeet
@@ -36,5 +39,6 @@ public class App extends Application {
         Toasts.install(this);
         RebaseRetrofit.debug = BuildConfig.DEBUG;
         MobclickAgent.setCatchUncaughtExceptions(true);
+        RxJavaPlugins.setErrorHandler(displayErrorConsumer(this));
     }
 }

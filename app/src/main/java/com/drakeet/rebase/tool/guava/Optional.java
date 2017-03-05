@@ -23,7 +23,6 @@ package com.drakeet.rebase.tool.guava;
 import android.support.annotation.Nullable;
 import java.io.Serializable;
 import java.util.Set;
-import rx.annotations.Beta;
 
 import static com.drakeet.rebase.tool.guava.Preconditions.checkNotNull;
 

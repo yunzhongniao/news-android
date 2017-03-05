@@ -20,15 +20,11 @@
 
 package com.drakeet.rebase.fragment;
 
-import android.os.Bundle;
-import com.trello.rxlifecycle.components.support.RxFragment;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 /**
  * @author drakeet
  */
 public class BaseFragment extends RxFragment {
 
-    @Override public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 }

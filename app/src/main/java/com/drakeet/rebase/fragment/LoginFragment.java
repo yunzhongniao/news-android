@@ -46,11 +46,10 @@ import com.drakeet.rebase.api.type.Auth;
 import com.drakeet.rebase.api.type.Login;
 import com.drakeet.rebase.tool.BlackBoxes;
 import com.drakeet.rebase.tool.Toasts;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action0;
-import rx.functions.Action1;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 
-import static com.drakeet.rebase.tool.ErrorHandlers.displayErrorAction;
 import static com.drakeet.rebase.tool.Strings.isNullOrEmpty;
 
 /**
@@ -136,25 +135,25 @@ public class LoginFragment extends DialogFragment {
 
         showProgress(true);
         Retrofits.rebase().login(login.username, login.password)
-            .doOnNext(new Action1<Auth>() {
-                @Override public void call(Auth auth) {
+            .doOnNext(new Consumer<Auth>() {
+                @Override public void accept(@NonNull Auth auth) {
                     RebaseRetrofit.setAuth(auth);
                     saveLogin(login);
                 }
             })
             .observeOn(AndroidSchedulers.mainThread())
-            .doAfterTerminate(new Action0() {
-                @Override public void call() {
+            .doFinally(new Action() {
+                @Override public void run() {
                     showProgress(false);
                 }
             })
-            .subscribe(new Action1<Auth>() {
-                @Override public void call(Auth auth) {
+            .subscribe(new Consumer<Auth>() {
+                @Override public void accept(@NonNull Auth auth) {
                     Toasts.showShort(R.string.login_successfully);
                     dialog.dismiss();
                     AdminActivity.start(context);
                 }
-            }, displayErrorAction(context));
+            });
     }
 
 

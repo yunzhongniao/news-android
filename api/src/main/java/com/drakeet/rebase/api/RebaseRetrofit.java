@@ -25,6 +25,7 @@ import com.drakeet.rebase.api.type.Auth;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.reactivex.schedulers.Schedulers;
 import java.io.IOException;
 import java.util.Collections;
 import okhttp3.CertificatePinner;
@@ -36,9 +37,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.schedulers.Schedulers;
 
 /**
  * @author drakeet
@@ -91,7 +91,7 @@ public class RebaseRetrofit {
                 .baseUrl(HttpUrl.parse(ENDPOINT))
                 .addConverterFactory(GsonConverterFactory.create(GSON))
                 .addCallAdapterFactory(
-                    RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()))
+                    RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .client(client);
 
         Retrofit retrofit = builder.build();

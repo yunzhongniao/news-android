@@ -23,13 +23,13 @@ package com.drakeet.rebase.api;
 import com.drakeet.rebase.api.type.Auth;
 import com.drakeet.rebase.api.type.Category;
 import com.drakeet.rebase.api.type.Feed;
+import io.reactivex.Flowable;
 import java.util.List;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * <a href="https://github.com/drakeet/rebase-api">Rebase-API document</a>
@@ -38,20 +38,20 @@ import rx.Observable;
  */
 public interface Rebase {
 
-    @GET("categories/{owner}") Observable<List<Category>> categories(@Path("owner") String owner);
+    @GET("categories/{owner}") Flowable<List<Category>> categories(@Path("owner") String owner);
 
     @GET("categories/{owner}/{category}/feeds")
-    Observable<List<Feed>> feeds(
+    Flowable<List<Feed>> feeds(
         @Path("owner") String owner,
         @Path("category") String category,
         @Query("last_id") String lastId,
         @Query("size") int size);
 
     @GET("authorizations/{username}")
-    Observable<Auth> login(@Path("username") String username, @Query("password") String password);
+    Flowable<Auth> login(@Path("username") String username, @Query("password") String password);
 
     @POST("categories/{username}/{category}/feeds")
-    Observable<Feed> newFeed(
+    Flowable<Feed> newFeed(
         @Path("username") String username,
         @Path("category") String category, @Body Feed feed);
 }

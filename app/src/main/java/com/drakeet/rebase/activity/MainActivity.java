@@ -44,12 +44,11 @@ import com.drakeet.rebase.tool.AbstractTabSelectedListener;
 import com.drakeet.rebase.tool.Analytics;
 import com.drakeet.rebase.tool.Colorful;
 import com.litesuits.orm.db.assit.QueryBuilder;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Predicate;
 import java.util.List;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.functions.Func1;
-
-import static com.drakeet.rebase.tool.ErrorHandlers.displayErrorAction;
 
 /**
  * Note: By default, we don't log the default selected fragment.
@@ -91,24 +90,24 @@ public class MainActivity extends ToolbarActivity {
         }
         Retrofits.rebase().categories(Configs.USERNAME)
             .compose(this.<List<Category>>bindToLifecycle())
-            .doOnNext(new Action1<List<Category>>() {
-                @Override public void call(List<Category> categories) {
+            .doOnNext(new Consumer<List<Category>>() {
+                @Override public void accept(@NonNull List<Category> categories) {
                     Stores.db.single().delete(Category.class);
                     Stores.db.single().save(categories);
                 }
             })
-            .filter(new Func1<List<Category>, Boolean>() {
-                @Override public Boolean call(List<Category> categories) {
+            .filter(new Predicate<List<Category>>() {
+                @Override public boolean test(@NonNull List<Category> categories) {
                     return !existCaches;
                 }
             })
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Action1<List<Category>>() {
-                @Override public void call(List<Category> categories) {
+            .subscribe(new Consumer<List<Category>>() {
+                @Override public void accept(@NonNull List<Category> categories) {
                     initViewPager(categories);
                     initTabLayout();
                 }
-            }, displayErrorAction(this));
+            });
     }
 
 
@@ -172,7 +171,7 @@ public class MainActivity extends ToolbarActivity {
     }
 
 
-    class MainPagerAdapter extends FragmentPagerAdapter {
+    private class MainPagerAdapter extends FragmentPagerAdapter {
 
         MainPagerAdapter(FragmentManager manager) {
             super(manager);

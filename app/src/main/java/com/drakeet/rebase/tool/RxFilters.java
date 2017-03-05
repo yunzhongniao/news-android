@@ -20,8 +20,9 @@
 
 package com.drakeet.rebase.tool;
 
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Predicate;
 import java.util.Collection;
-import rx.functions.Func1;
 
 /**
  * @author drakeet
@@ -35,27 +36,27 @@ public class RxFilters {
      * @return true if the input collection is not empty.
      * @throws ClassCastException If the input is not an instance of Collection.
      */
-    public static <T> Func1<T, Boolean> notEmpty() {
-        return new Func1<T, Boolean>() {
-            @Override public Boolean call(T t) {
+    public static <T> Predicate<T> notEmpty() {
+        return new Predicate<T>() {
+            @Override public boolean test(@NonNull T t) throws Exception {
                 return !((Collection) t).isEmpty();
             }
         };
     }
 
 
-    public static <T> Func1<T, Boolean> notNull() {
-        return new Func1<T, Boolean>() {
-            @Override public Boolean call(T t) {
+    public static <T> Predicate<T> notNull() {
+        return new Predicate<T>() {
+            @Override public boolean test(@NonNull T t) {
                 return t != null;
             }
         };
     }
 
 
-    public static <T> Func1<? super Object, Boolean> event(final Class<T> eventClass) {
-        return new Func1<Object, Boolean>() {
-            @Override public Boolean call(Object o) {
+    public static <T> Predicate<?> event(final Class<T> eventClass) {
+        return new Predicate<Object>() {
+            @Override public boolean test(@NonNull Object o) {
                 return o.getClass().equals(eventClass);
             }
         };

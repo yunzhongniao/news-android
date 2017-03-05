@@ -35,10 +35,10 @@ import com.drakeet.rebase.api.Retrofits;
 import com.drakeet.rebase.api.type.Feed;
 import com.drakeet.rebase.tool.TimeDesc;
 import com.drakeet.rebase.tool.Toasts;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
 
-import static com.drakeet.rebase.tool.ErrorHandlers.displayErrorAction;
 import static com.drakeet.rebase.tool.Strings.emptyToNull;
 
 public class AdminActivity extends ToolbarActivity {
@@ -75,13 +75,13 @@ public class AdminActivity extends ToolbarActivity {
         Retrofits.rebase().newFeed(Configs.USERNAME, category, feed)
             .compose(this.<Feed>bindToLifecycle())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Action1<Feed>() {
-                @Override public void call(Feed feed) {
+            .subscribe(new Consumer<Feed>() {
+                @Override public void accept(@NonNull Feed feed) {
                     Toasts.showShort(getString(R.string.has_posted_at) +
                         TimeDesc.gsonFormat(feed.publishedAt));
                     AdminActivity.this.finish();
                 }
-            }, displayErrorAction(this));
+            });
     }
 
 

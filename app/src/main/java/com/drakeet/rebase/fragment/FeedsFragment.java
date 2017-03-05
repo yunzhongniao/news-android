@@ -30,14 +30,14 @@ import com.drakeet.rebase.multitype.FeedViewProvider;
 import com.drakeet.rebase.tool.Analytics;
 import com.drakeet.rebase.tool.guava.Optional;
 import com.litesuits.orm.db.assit.QueryBuilder;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 import java.util.List;
 import me.drakeet.multitype.Items;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action0;
-import rx.functions.Action1;
 
 import static com.drakeet.rebase.Configs.PAGE_SIZE;
-import static com.drakeet.rebase.tool.ErrorHandlers.displayErrorAction;
 
 /**
  * @author drakeet
@@ -102,28 +102,28 @@ public class FeedsFragment extends ListBaseFragment {
         notifyLoadingStarted();
         Retrofits.rebase().feeds(Configs.USERNAME, category, lastId, PAGE_SIZE)
             .compose(this.<List<Feed>>bindToLifecycle())
-            .doOnNext(new Action1<List<Feed>>() {
-                @Override public void call(List<Feed> feeds) {
+            .doOnNext(new Consumer<List<Feed>>() {
+                @Override public void accept(@NonNull List<Feed> feeds) {
                     Stores.db.save(feeds);
                     setEnd(feeds.size() == 0);
                 }
             })
             .observeOn(AndroidSchedulers.mainThread())
-            .doAfterTerminate(new Action0() {
-                @Override public void call() {
+            .doFinally(new Action() {
+                @Override public void run() {
                     setRefresh(false);
                     notifyLoadingFinished();
                 }
             })
-            .subscribe(new Action1<List<Feed>>() {
-                @Override public void call(List<Feed> feeds) {
+            .subscribe(new Consumer<List<Feed>>() {
+                @Override public void accept(@NonNull List<Feed> feeds) {
                     Items tempItems = clear ? new Items() : new Items(items);
                     tempItems.addAll(feeds);
                     items = tempItems;
                     adapter.setItems(tempItems);
                     adapter.notifyDataSetChanged();
                 }
-            }, displayErrorAction(getContext()));
+            });
     }
 
 

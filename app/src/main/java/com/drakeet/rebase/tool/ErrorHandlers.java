@@ -25,9 +25,10 @@ import android.util.Log;
 import android.widget.Toast;
 import com.drakeet.rebase.R;
 import com.drakeet.rebase.api.tool.Errors;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
 import java.net.UnknownHostException;
-import retrofit2.adapter.rxjava.HttpException;
-import rx.functions.Action1;
+import retrofit2.HttpException;
 
 /**
  * @author drakeet
@@ -67,9 +68,9 @@ public class ErrorHandlers {
     }
 
 
-    public static Action1<Throwable> displayErrorAction(final Context context) {
-        return new Action1<Throwable>() {
-            @Override public void call(Throwable throwable) {
+    public static Consumer<Throwable> displayErrorConsumer(final Context context) {
+        return new Consumer<Throwable>() {
+            @Override public void accept(@NonNull Throwable throwable) {
                 displayError(context, throwable);
             }
         };
