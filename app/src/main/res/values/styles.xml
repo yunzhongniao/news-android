@@ -74,7 +74,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
         <item name="android:layout_alignBottom">@id/content</item>
-        <item name="android:background">#E5E0E0</item>
+        <item name="android:background">@color/line_divider</item>
     </style>
 
     <style name="Widget.Rebase.WhiteCard">

@@ -64,6 +64,9 @@
 
     <!-- v7 DividerItemDecoration 是个坑爹货 -->
 
-    <View style="@style/Widget.Rebase.Divider"/>
+    <View
+        style="@style/Widget.Rebase.Divider"
+        android:id="@+id/divider"
+        android:layout_below="@+id/title"/>
 
 </RelativeLayout>

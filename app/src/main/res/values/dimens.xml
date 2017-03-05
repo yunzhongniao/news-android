@@ -28,9 +28,10 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="item_radius">4dp</dimen>
-    <dimen name="list_view_space">16dp</dimen>
+    <dimen name="list_view_space_left">16dp</dimen>
     <dimen name="list_view_space_right">15dp</dimen>
     <dimen name="list_view_space_top">14dp</dimen>
+    <dimen name="list_view_space_bottom">16dp</dimen>
 
     <dimen name="tab_height">42dp</dimen>
     <dimen name="tab_text_size">17sp</dimen>

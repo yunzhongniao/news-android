@@ -69,6 +69,11 @@ public class FeedViewProvider
         } else {
             holder.itemView.setBackgroundResource(R.drawable.item_feed_normal_background);
         }
+        if (getPosition(holder) == lastPosition) {
+            holder.divider.setVisibility(View.GONE);
+        } else {
+            holder.divider.setVisibility(View.VISIBLE);
+        }
         holder.setFeed(feed);
     }
 
@@ -79,6 +84,7 @@ public class FeedViewProvider
         @BindView(R.id.category_name) TextView categoryName;
         @BindView(R.id.title) TextView title;
         @BindView(R.id.published_at) TextView publishedAt;
+        @BindView(R.id.divider) View divider;
         Feed feed;
 
 

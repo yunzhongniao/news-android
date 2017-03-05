@@ -57,5 +57,6 @@
     <color name="tabBackground">@color/toolbarBackground</color>
     <color name="tabTextColor">@color/toolbarTextColor</color>
     <color name="overflowHeaderColor">@color/window_background</color>
+    <color name="line_divider">#E5E0E0</color>
 
 </resources>
