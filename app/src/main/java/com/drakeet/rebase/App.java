@@ -20,11 +20,14 @@
 
 package com.drakeet.rebase;
 
+import android.app.ActivityManager;
 import android.app.Application;
+import android.content.Context;
 import com.drakeet.rebase.api.RebaseRetrofit;
 import com.drakeet.rebase.tool.Toasts;
 import com.umeng.analytics.MobclickAgent;
 import io.reactivex.plugins.RxJavaPlugins;
+import java.util.List;
 
 import static com.drakeet.rebase.tool.ErrorHandlers.displayErrorConsumer;
 
@@ -35,10 +38,26 @@ public class App extends Application {
 
     @Override public void onCreate() {
         super.onCreate();
-        Stores.install(this);
-        Toasts.install(this);
-        RebaseRetrofit.debug = BuildConfig.DEBUG;
-        MobclickAgent.setCatchUncaughtExceptions(true);
-        RxJavaPlugins.setErrorHandler(displayErrorConsumer(this));
+        if (isMainProcess(this)) {
+            Stores.install(this);
+            Toasts.install(this);
+            RebaseRetrofit.setDebug(BuildConfig.DEBUG);
+            MobclickAgent.setCatchUncaughtExceptions(true);
+            RxJavaPlugins.setErrorHandler(displayErrorConsumer(this));
+        }
+    }
+
+
+    public static boolean isMainProcess(Context context) {
+        ActivityManager am = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE));
+        List<ActivityManager.RunningAppProcessInfo> processInfoList = am.getRunningAppProcesses();
+        String mainProcessName = context.getPackageName();
+        int myPid = android.os.Process.myPid();
+        for (ActivityManager.RunningAppProcessInfo info : processInfoList) {
+            if (info.pid == myPid && mainProcessName.equals(info.processName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

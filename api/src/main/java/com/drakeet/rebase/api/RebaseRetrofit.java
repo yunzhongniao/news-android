@@ -48,7 +48,7 @@ public class RebaseRetrofit {
 
     final Rebase service;
 
-    public static boolean debug = true;
+    private static boolean debug = true;
     private static Auth auth = null;
 
     public static final String ENDPOINT = "https://api.drakeet.com/rebase/";
@@ -102,6 +102,11 @@ public class RebaseRetrofit {
 
     public static void setAuth(Auth auth) {
         RebaseRetrofit.auth = auth;
+    }
+
+
+    public static void setDebug(boolean debug) {
+        RebaseRetrofit.debug = debug;
     }
 
 
