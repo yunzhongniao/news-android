@@ -22,7 +22,7 @@ package com.drakeet.rebase.api.tool;
 
 import com.drakeet.rebase.api.type.Error;
 import com.google.gson.Gson;
-import retrofit2.adapter.rxjava.HttpException;
+import retrofit2.HttpException;
 
 /**
  * @author drakeet
