@@ -118,11 +118,11 @@ public class WebActivity extends ToolbarActivity
                 textView.setTextAppearance(context, R.style.WebTitle);
                 textView.setSingleLine(true);
                 textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                textView.postDelayed(new Runnable() {
-                    @Override public void run() {
-                        textView.setSelected(true);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override public void onClick(final View v) {
+                        v.setSelected(!v.isSelected());
                     }
-                }, 1738);
+                });
                 return textView;
             }
         });
