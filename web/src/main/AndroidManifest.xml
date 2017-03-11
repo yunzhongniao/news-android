@@ -25,7 +25,8 @@
 
         <activity
             android:name=".WebActivity"
-            android:theme="@style/WebAppTheme"/>
+            android:theme="@style/WebAppTheme"
+            android:launchMode="singleTask"/>
 
     </application>
 

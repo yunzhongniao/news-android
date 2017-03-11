@@ -43,6 +43,7 @@ public class App extends Application {
             Toasts.install(this);
             RebaseRetrofit.setDebug(BuildConfig.DEBUG);
             MobclickAgent.setCatchUncaughtExceptions(true);
+            MobclickAgent.setDebugMode(BuildConfig.DEBUG);
             RxJavaPlugins.setErrorHandler(displayErrorConsumer(this));
         }
     }
