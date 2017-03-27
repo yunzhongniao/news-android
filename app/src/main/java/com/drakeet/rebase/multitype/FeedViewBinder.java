@@ -41,13 +41,12 @@ import com.drakeet.rebase.tool.Strings;
 import com.drakeet.rebase.tool.TimeDesc;
 import com.drakeet.rebase.tool.guava.Optional;
 import de.hdodenhof.circleimageview.CircleImageView;
-import me.drakeet.multitype.ItemViewProvider;
+import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author drakeet
  */
-public class FeedViewProvider
-    extends ItemViewProvider<Feed, FeedViewProvider.FeedViewHolder> {
+public class FeedViewBinder extends ItemViewBinder<Feed, FeedViewBinder.FeedViewHolder> {
 
     @NonNull @Override
     protected FeedViewHolder onCreateViewHolder(

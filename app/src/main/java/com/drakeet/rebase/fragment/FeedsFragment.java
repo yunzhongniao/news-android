@@ -26,7 +26,7 @@ import com.drakeet.rebase.Configs;
 import com.drakeet.rebase.Stores;
 import com.drakeet.rebase.api.Retrofits;
 import com.drakeet.rebase.api.type.Feed;
-import com.drakeet.rebase.multitype.FeedViewProvider;
+import com.drakeet.rebase.multitype.FeedViewBinder;
 import com.drakeet.rebase.tool.Analytics;
 import com.drakeet.rebase.tool.guava.Optional;
 import com.litesuits.orm.db.assit.QueryBuilder;
@@ -72,7 +72,7 @@ public class FeedsFragment extends ListBaseFragment {
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         parseArguments(getArguments());
-        adapter.register(Feed.class, new FeedViewProvider());
+        adapter.register(Feed.class, new FeedViewBinder());
         resetLastId();
     }
 

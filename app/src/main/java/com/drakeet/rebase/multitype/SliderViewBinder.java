@@ -34,14 +34,13 @@ import com.drakeet.rebase.api.type.Feed;
 import com.drakeet.rebase.api.type.Slider;
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 import java.util.List;
-import me.drakeet.multitype.ItemViewProvider;
+import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author drakeet
  * @deprecated
  */
-public class SliderViewProvider
-    extends ItemViewProvider<Slider, SliderViewProvider.SliderViewHolder> {
+public class SliderViewBinder extends ItemViewBinder<Slider, SliderViewBinder.SliderViewHolder> {
 
     @NonNull @Override
     protected SliderViewHolder onCreateViewHolder(
@@ -52,8 +51,7 @@ public class SliderViewProvider
 
 
     @Override
-    protected void onBindViewHolder(
-        @NonNull SliderViewHolder holder, @NonNull Slider slider) {
+    protected void onBindViewHolder(@NonNull SliderViewHolder holder, @NonNull Slider slider) {
         holder.setFeeds(slider.feeds);
         // TODO: 2016/11/29 record scroll position
     }
