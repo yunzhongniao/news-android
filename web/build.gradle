@@ -40,6 +40,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.daimajia.numberprogressbar:library:1.2@aar'
 }
