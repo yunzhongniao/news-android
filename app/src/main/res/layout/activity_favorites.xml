@@ -26,7 +26,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.drakeet.rebase.activity.FavoritesActivity">
+    tools:context=".activity.FavoritesActivity">
 
     <include layout="@layout/toolbar"/>
 
