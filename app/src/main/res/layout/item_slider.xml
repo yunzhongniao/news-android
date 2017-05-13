@@ -19,7 +19,8 @@
   ~ along with rebase-android. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/slider"
     android:layout_width="match_parent"
