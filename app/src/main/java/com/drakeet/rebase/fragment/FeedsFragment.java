@@ -69,7 +69,8 @@ public class FeedsFragment extends ListBaseFragment {
     }
 
 
-    @Override public void onCreate(Bundle savedInstanceState) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         parseArguments(getArguments());
         adapter.register(Feed.class, new FeedViewBinder());
@@ -77,7 +78,8 @@ public class FeedsFragment extends ListBaseFragment {
     }
 
 
-    @Override protected void loadData(boolean clear) {
+    @Override
+    protected void loadData(boolean clear) {
         loadDataFromCache();
         loadDataFromRemote(clear);
     }
@@ -103,20 +105,23 @@ public class FeedsFragment extends ListBaseFragment {
         Retrofits.rebase().feeds(Configs.USERNAME, category, lastId, PAGE_SIZE)
             .compose(this.<List<Feed>>bindToLifecycle())
             .doOnNext(new Consumer<List<Feed>>() {
-                @Override public void accept(@NonNull List<Feed> feeds) {
+                @Override
+                public void accept(@NonNull List<Feed> feeds) {
                     Stores.db.save(feeds);
                     setEnd(feeds.size() == 0);
                 }
             })
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally(new Action() {
-                @Override public void run() {
+                @Override
+                public void run() {
                     setRefresh(false);
                     notifyLoadingFinished();
                 }
             })
             .subscribe(new Consumer<List<Feed>>() {
-                @Override public void accept(@NonNull List<Feed> feeds) {
+                @Override
+                public void accept(@NonNull List<Feed> feeds) {
                     Items tempItems = clear ? new Items() : new Items(items);
                     tempItems.addAll(feeds);
                     items = tempItems;
@@ -127,13 +132,15 @@ public class FeedsFragment extends ListBaseFragment {
     }
 
 
-    @Override public void onSwipeRefresh() {
+    @Override
+    public void onSwipeRefresh() {
         resetLastId();
         loadDataFromRemote(true);
     }
 
 
-    @Override protected boolean onInterceptLoadMore() {
+    @Override
+    protected boolean onInterceptLoadMore() {
         if (!isLoading()) {
             lastId = ((Feed) items.get(items.size() - 1))._id;
             loadDataFromRemote(false);

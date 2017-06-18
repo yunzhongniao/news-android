@@ -80,7 +80,8 @@ public class CompactTabLayout extends TabLayout {
     }
 
 
-    @Override public void setupWithViewPager(@Nullable ViewPager viewPager) {
+    @Override
+    public void setupWithViewPager(@Nullable ViewPager viewPager) {
         super.setupWithViewPager(viewPager);
         if (viewPager != null) {
             viewPager.addOnPageChangeListener(new HoverOnPageChangeListener(this));
@@ -92,13 +93,15 @@ public class CompactTabLayout extends TabLayout {
     }
 
 
-    @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         height = h;
     }
 
 
-    @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         measureTabWidths();
     }
@@ -115,12 +118,14 @@ public class CompactTabLayout extends TabLayout {
     }
 
 
-    @Override protected void onFinishInflate() {
+    @Override
+    protected void onFinishInflate() {
         super.onFinishInflate();
     }
 
 
-    @Override protected void dispatchDraw(Canvas canvas) {
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
         if (tabCount == 0) {
             return;
@@ -168,7 +173,8 @@ public class CompactTabLayout extends TabLayout {
         }
 
 
-        @Override public void onPageSelected(int position) {
+        @Override
+        public void onPageSelected(int position) {
             super.onPageSelected(position);
             for (int i = 0; i < tabCount; i++) {
                 final TextView textView = tabViews.get(i);

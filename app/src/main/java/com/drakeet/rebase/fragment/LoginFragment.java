@@ -74,12 +74,14 @@ public class LoginFragment extends DialogFragment {
     }
 
 
-    @Override public void onStart() {
+    @Override
+    public void onStart() {
         super.onStart();
         final AlertDialog dialog = (AlertDialog) getDialog();
         final Button loginButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
         loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 onLogin(dialog);
             }
         });
@@ -95,7 +97,9 @@ public class LoginFragment extends DialogFragment {
     }
 
 
-    @NonNull @Override public Dialog onCreateDialog(Bundle savedInstanceState) {
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         context = getContext();
         return new AlertDialog.Builder(context)
             .setView(onCreateDialogContentView(savedInstanceState))
@@ -136,19 +140,22 @@ public class LoginFragment extends DialogFragment {
         showProgress(true);
         Retrofits.rebase().login(login.username, login.password)
             .doOnNext(new Consumer<Auth>() {
-                @Override public void accept(@NonNull Auth auth) {
+                @Override
+                public void accept(@NonNull Auth auth) {
                     RebaseRetrofit.setAuth(auth);
                     saveLogin(login);
                 }
             })
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally(new Action() {
-                @Override public void run() {
+                @Override
+                public void run() {
                     showProgress(false);
                 }
             })
             .subscribe(new Consumer<Auth>() {
-                @Override public void accept(@NonNull Auth auth) {
+                @Override
+                public void accept(@NonNull Auth auth) {
                     Toasts.showShort(R.string.login_successfully);
                     dialog.dismiss();
                     AdminActivity.start(context);

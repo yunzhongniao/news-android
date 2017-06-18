@@ -111,7 +111,8 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
                 }
 
 
-                @Override public void onAnimationRepeat(final Animation animation) {
+                @Override
+                public void onAnimationRepeat(final Animation animation) {
                 }
             });
             button.startAnimation(anim);

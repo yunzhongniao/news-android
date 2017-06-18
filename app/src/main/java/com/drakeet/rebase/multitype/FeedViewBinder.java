@@ -48,7 +48,8 @@ import me.drakeet.multitype.ItemViewBinder;
  */
 public class FeedViewBinder extends ItemViewBinder<Feed, FeedViewBinder.FeedViewHolder> {
 
-    @NonNull @Override
+    @NonNull
+    @Override
     protected FeedViewHolder onCreateViewHolder(
         @NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View root = inflater.inflate(R.layout.item_feed, parent, false);

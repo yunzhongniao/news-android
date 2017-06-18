@@ -69,7 +69,8 @@ public class MainActivity extends ToolbarActivity {
     @Nullable AbstractPageChangeListener onPageChangeListener;
 
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         Colorful.init(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -91,19 +92,22 @@ public class MainActivity extends ToolbarActivity {
         Retrofits.rebase().categories(Configs.USERNAME)
             .compose(this.<List<Category>>bindToLifecycle())
             .doOnNext(new Consumer<List<Category>>() {
-                @Override public void accept(@NonNull List<Category> categories) {
+                @Override
+                public void accept(@NonNull List<Category> categories) {
                     Stores.db.single().delete(Category.class);
                     Stores.db.single().save(categories);
                 }
             })
             .filter(new Predicate<List<Category>>() {
-                @Override public boolean test(@NonNull List<Category> categories) {
+                @Override
+                public boolean test(@NonNull List<Category> categories) {
                     return !existCaches;
                 }
             })
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new Consumer<List<Category>>() {
-                @Override public void accept(@NonNull List<Category> categories) {
+                @Override
+                public void accept(@NonNull List<Category> categories) {
                     initViewPager(categories);
                     initTabLayout();
                 }
@@ -117,7 +121,8 @@ public class MainActivity extends ToolbarActivity {
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOffscreenPageLimit(categories.size());
         onPageChangeListener = new AbstractPageChangeListener() {
-            @Override public void onPageSelected(int position) {
+            @Override
+            public void onPageSelected(int position) {
                 onPageChanged(position);
             }
         };
@@ -129,7 +134,8 @@ public class MainActivity extends ToolbarActivity {
     private void initTabLayout() {
         tabLayout.setupWithViewPager(viewPager);
         onTabSelectedListener = new AbstractTabSelectedListener() {
-            @Override public void onTabSelected(TabLayout.Tab tab) {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition(), false);
                 String tabName = categories.get(tab.getPosition()).name;
                 Analytics.of(context()).logEvent("TabSelected", "tab", tabName);
@@ -145,13 +151,15 @@ public class MainActivity extends ToolbarActivity {
     }
 
 
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
 
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_login:
                 LoginFragment.newInstance().show(getSupportFragmentManager(), "Login");
@@ -178,17 +186,20 @@ public class MainActivity extends ToolbarActivity {
         }
 
 
-        @Override public Fragment getItem(int position) {
+        @Override
+        public Fragment getItem(int position) {
             return FeedsFragment.newInstance(categories.get(position).key);
         }
 
 
-        @Override public int getCount() {
+        @Override
+        public int getCount() {
             return categories.size();
         }
 
 
-        @Override public CharSequence getPageTitle(int position) {
+        @Override
+        public CharSequence getPageTitle(int position) {
             return categories.get(position).name;
         }
     }

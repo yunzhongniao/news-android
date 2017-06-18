@@ -43,7 +43,8 @@ class MockInterceptor implements Interceptor {
     }
 
 
-    @Override public Response intercept(Chain chain) throws IOException {
+    @Override
+    public Response intercept(Chain chain) throws IOException {
         HttpUrl url = chain.request().url();
         for (String path : map.keySet()) {
             if (url.toString().equals(RebaseRetrofit.ENDPOINT + path)) {

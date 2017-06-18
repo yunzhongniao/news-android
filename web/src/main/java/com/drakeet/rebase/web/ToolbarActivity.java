@@ -43,7 +43,8 @@ class ToolbarActivity extends AppCompatActivity {
     }
 
 
-    @Override public void setContentView(View view) {
+    @Override
+    public void setContentView(View view) {
         super.setContentView(view);
         init();
     }

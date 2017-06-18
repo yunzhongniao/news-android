@@ -47,7 +47,8 @@ public class ToolbarActivity extends BaseActivity {
     }
 
 
-    @Override public void setContentView(@LayoutRes int layoutResID) {
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.bind(holder, this);
         toolbar = holder.toolbar;

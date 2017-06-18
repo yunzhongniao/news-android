@@ -38,7 +38,8 @@ public class RxFilters {
      */
     public static <T> Predicate<T> notEmpty() {
         return new Predicate<T>() {
-            @Override public boolean test(@NonNull T t) throws Exception {
+            @Override
+            public boolean test(@NonNull T t) throws Exception {
                 return !((Collection) t).isEmpty();
             }
         };
@@ -47,7 +48,8 @@ public class RxFilters {
 
     public static <T> Predicate<T> notNull() {
         return new Predicate<T>() {
-            @Override public boolean test(@NonNull T t) {
+            @Override
+            public boolean test(@NonNull T t) {
                 return t != null;
             }
         };
@@ -56,7 +58,8 @@ public class RxFilters {
 
     public static <T> Predicate<?> event(final Class<T> eventClass) {
         return new Predicate<Object>() {
-            @Override public boolean test(@NonNull Object o) {
+            @Override
+            public boolean test(@NonNull Object o) {
                 return o.getClass().equals(eventClass);
             }
         };

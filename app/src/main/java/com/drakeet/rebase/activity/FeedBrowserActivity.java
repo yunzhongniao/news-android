@@ -50,7 +50,8 @@ public class FeedBrowserActivity extends WebActivity {
     }
 
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         feedId = getIntent().getStringExtra(EXTRA_FEED_ID);
         feedTitle = getIntent().getStringExtra(EXTRA_FEED_TITLE);
@@ -58,13 +59,15 @@ public class FeedBrowserActivity extends WebActivity {
     }
 
 
-    @Override protected void onResume() {
+    @Override
+    protected void onResume() {
         super.onResume();
         MobclickAgent.onResume(this);
     }
 
 
-    @Override protected void onPause() {
+    @Override
+    protected void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);
     }
@@ -84,7 +87,8 @@ public class FeedBrowserActivity extends WebActivity {
     }
 
 
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_favorite:

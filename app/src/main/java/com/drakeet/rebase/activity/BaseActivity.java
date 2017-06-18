@@ -47,7 +47,8 @@ public class BaseActivity extends RxAppCompatActivity {
     boolean doubleClickToExitEnabled;
 
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         overridePendingTransition(INSTANT_IN, INSTANT_OUT);
         super.onCreate(savedInstanceState);
         dialog = new ProgressDialog(this);
@@ -99,7 +100,8 @@ public class BaseActivity extends RxAppCompatActivity {
     protected Context context() { return this; }
 
 
-    @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (doubleClickToExitEnabled) {
                 attemptDoubleClickExit();
@@ -110,7 +112,8 @@ public class BaseActivity extends RxAppCompatActivity {
     }
 
 
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
@@ -132,7 +135,8 @@ public class BaseActivity extends RxAppCompatActivity {
             exitToast = Toast.makeText(this, R.string.double_click_to_exit, Toast.LENGTH_SHORT);
             exitToast.show();
             new Handler().postDelayed(new Runnable() {
-                @Override public void run() {
+                @Override
+                public void run() {
                     doubleClickExit = false;
                 }
             }, 1200);
@@ -152,7 +156,8 @@ public class BaseActivity extends RxAppCompatActivity {
     }
 
 
-    @Override public void finish() {
+    @Override
+    public void finish() {
         super.finish();
         overridePendingTransition(INSTANT_IN, INSTANT_OUT);
     }

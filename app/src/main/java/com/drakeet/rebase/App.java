@@ -36,7 +36,8 @@ import static com.drakeet.rebase.tool.ErrorHandlers.displayErrorConsumer;
  */
 public class App extends Application {
 
-    @Override public void onCreate() {
+    @Override
+    public void onCreate() {
         super.onCreate();
         if (isMainProcess(this)) {
             Stores.install(this);

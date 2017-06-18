@@ -56,7 +56,8 @@ public abstract class ListBaseFragment extends BaseFragment
     protected Items items;
 
 
-    @Override public void onCreate(Bundle savedInstanceState) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         items = new Items();
         adapter = new MultiTypeAdapter(items);
@@ -66,7 +67,8 @@ public abstract class ListBaseFragment extends BaseFragment
     }
 
 
-    @Nullable @Override
+    @Nullable
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_list, container, false);
         ButterKnife.bind(this, root);
@@ -91,12 +93,14 @@ public abstract class ListBaseFragment extends BaseFragment
     }
 
 
-    @Override public void onSwipeRefresh() {
+    @Override
+    public void onSwipeRefresh() {
         loadData(true);
     }
 
 
-    @Override public final void onLoadMore() {
+    @Override
+    public final void onLoadMore() {
         if (!isEnd()) {
             Log.d(TAG, "[onLoadMore]" + "isEnd == false");
             if (!onInterceptLoadMore()) {
@@ -131,7 +135,8 @@ public abstract class ListBaseFragment extends BaseFragment
     }
 
 
-    @Override public boolean isLoading() {
+    @Override
+    public boolean isLoading() {
         return loadingCount.get() > 0;
     }
 

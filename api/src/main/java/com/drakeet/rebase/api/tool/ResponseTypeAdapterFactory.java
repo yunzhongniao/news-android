@@ -56,7 +56,8 @@ public class ResponseTypeAdapterFactory implements TypeAdapterFactory {
             }
 
 
-            @Override @SuppressWarnings("PointlessBooleanExpression")
+            @Override
+            @SuppressWarnings("PointlessBooleanExpression")
             public T read(JsonReader in) throws IOException {
                 JsonElement jsonElement = jsonElementAdapter.read(in);
                 if (jsonElement.isJsonObject()) {

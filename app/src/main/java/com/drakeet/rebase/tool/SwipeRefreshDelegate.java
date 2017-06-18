@@ -64,7 +64,8 @@ public class SwipeRefreshDelegate {
     private void trySetupSwipeRefresh() {
         if (swipeRefreshLayout != null) {
             swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override public void onRefresh() {
+                @Override
+                public void onRefresh() {
                     providedListener.onSwipeRefresh();
                 }
             });
@@ -78,7 +79,8 @@ public class SwipeRefreshDelegate {
         }
         if (!requestDataRefresh) {
             swipeRefreshLayout.postDelayed(new Runnable() {
-                @Override public void run() {
+                @Override
+                public void run() {
                     if (swipeRefreshLayout != null) {
                         swipeRefreshLayout.setRefreshing(false);
                     }

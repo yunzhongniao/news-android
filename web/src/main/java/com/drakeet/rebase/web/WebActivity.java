@@ -82,7 +82,8 @@ public class WebActivity extends ToolbarActivity
 
 
     @SuppressLint("SetJavaScriptEnabled")
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         overridePendingTransition(0, 0);
         super.onCreate(savedInstanceState);
         swipeBackDelegate = new SwipeBackDelegate();
@@ -112,14 +113,17 @@ public class WebActivity extends ToolbarActivity
         webView.loadUrl(url);
 
         textSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
-            @SuppressWarnings("deprecation") @Override public View makeView() {
+            @SuppressWarnings("deprecation")
+            @Override
+            public View makeView() {
                 final Context context = WebActivity.this;
                 final TextView textView = new TextView(context);
                 textView.setTextAppearance(context, R.style.WebTitle);
                 textView.setSingleLine(true);
                 textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
                 textView.setOnClickListener(new View.OnClickListener() {
-                    @Override public void onClick(final View v) {
+                    @Override
+                    public void onClick(final View v) {
                         v.setSelected(!v.isSelected());
                     }
                 });
@@ -137,7 +141,8 @@ public class WebActivity extends ToolbarActivity
     }
 
 
-    @Override public void setTitle(CharSequence title) {
+    @Override
+    public void setTitle(CharSequence title) {
         super.setTitle(title);
         textSwitcher.setText(title);
     }
@@ -148,7 +153,8 @@ public class WebActivity extends ToolbarActivity
     }
 
 
-    @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (keyCode) {
                 case KeyEvent.KEYCODE_BACK:
@@ -164,13 +170,15 @@ public class WebActivity extends ToolbarActivity
     }
 
 
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.web_menu_web, menu);
         return true;
     }
 
 
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
             refresh();
@@ -193,7 +201,8 @@ public class WebActivity extends ToolbarActivity
 
 
     @SuppressWarnings("deprecation")
-    @Override protected void onDestroy() {
+    @Override
+    protected void onDestroy() {
         final String url = webView.getUrl();
         int bottom = (int) Math.floor(webView.getContentHeight() * webView.getScale() * 0.8f);
         if (positionHolder >= bottom) {
@@ -206,20 +215,23 @@ public class WebActivity extends ToolbarActivity
     }
 
 
-    @Override public void finish() {
+    @Override
+    public void finish() {
         super.finish();
         overridePendingTransition(0, 0);
     }
 
 
-    @Override public void onScrollChanged(WebView v, int x, int y, int oldX, int oldY) {
+    @Override
+    public void onScrollChanged(WebView v, int x, int y, int oldX, int oldY) {
         positionHolder = y;
     }
 
 
     private class ChromeClient extends WebChromeClient {
 
-        @Override public void onProgressChanged(WebView view, int newProgress) {
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
             super.onProgressChanged(view, newProgress);
             progressbar.setProgress(newProgress);
             if (newProgress == 100) {
@@ -230,7 +242,8 @@ public class WebActivity extends ToolbarActivity
         }
 
 
-        @Override public void onReceivedTitle(WebView view, String title) {
+        @Override
+        public void onReceivedTitle(WebView view, String title) {
             super.onReceivedTitle(view, title);
             if (overrideTitleEnabled) {
                 setTitle(title);
@@ -248,7 +261,8 @@ public class WebActivity extends ToolbarActivity
         }
 
 
-        @Override public void onPageCommitVisible(WebView view, String url) {
+        @Override
+        public void onPageCommitVisible(WebView view, String url) {
             super.onPageCommitVisible(view, url);
             Integer _position = URL_POSITION_CACHES.get(url);
             int position = _position == null ? 0 : _position;
@@ -256,7 +270,8 @@ public class WebActivity extends ToolbarActivity
         }
 
 
-        @Override public void onPageFinished(WebView view, String url) {
+        @Override
+        public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             boolean isBlackPage = false;
             for (String blackKey : SwipeBlacklist.get()) {

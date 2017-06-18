@@ -42,7 +42,8 @@ import me.drakeet.multitype.ItemViewBinder;
  */
 public class SliderViewBinder extends ItemViewBinder<Slider, SliderViewBinder.SliderViewHolder> {
 
-    @NonNull @Override
+    @NonNull
+    @Override
     protected SliderViewHolder onCreateViewHolder(
         @NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View root = inflater.inflate(R.layout.item_slider, parent, false);
@@ -102,7 +103,8 @@ public class SliderViewBinder extends ItemViewBinder<Slider, SliderViewBinder.Sl
         }
 
 
-        @Override public int getItemCount() {
+        @Override
+        public int getItemCount() {
             return feeds == null ? 0 : feeds.size();
         }
 

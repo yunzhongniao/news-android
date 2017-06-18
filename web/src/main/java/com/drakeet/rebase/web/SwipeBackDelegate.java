@@ -45,7 +45,8 @@ public class SwipeBackDelegate implements SwipeBackLayout.SwipeBackListener {
     }
 
 
-    @SuppressWarnings("deprecation") private View getContainer(Context context) {
+    @SuppressWarnings("deprecation")
+    private View getContainer(Context context) {
         RelativeLayout container = new RelativeLayout(context);
         swipeBackLayout = new SwipeBackLayout(context);
         swipeBackLayout.setOnSwipeBackListener(this);

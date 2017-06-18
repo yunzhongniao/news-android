@@ -76,7 +76,8 @@ public class AdminActivity extends ToolbarActivity {
             .compose(this.<Feed>bindToLifecycle())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new Consumer<Feed>() {
-                @Override public void accept(@NonNull Feed feed) {
+                @Override
+                public void accept(@NonNull Feed feed) {
                     Toasts.showShort(getString(R.string.has_posted_at) +
                         TimeDesc.gsonFormat(feed.publishedAt));
                     AdminActivity.this.finish();
@@ -85,13 +86,15 @@ public class AdminActivity extends ToolbarActivity {
     }
 
 
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.admin, menu);
         return true;
     }
 
 
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_post:
                 onPost();
@@ -102,5 +105,6 @@ public class AdminActivity extends ToolbarActivity {
     }
 
 
-    @Override public boolean canBack() { return true; }
+    @Override
+    public boolean canBack() { return true; }
 }

@@ -30,12 +30,14 @@ public abstract class AbstractTabSelectedListener implements TabLayout.OnTabSele
     public abstract void onTabSelected(TabLayout.Tab tab);
 
 
-    @Override public void onTabUnselected(TabLayout.Tab tab) {
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
 
     }
 
 
-    @Override public void onTabReselected(TabLayout.Tab tab) {
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
 
     }
 }

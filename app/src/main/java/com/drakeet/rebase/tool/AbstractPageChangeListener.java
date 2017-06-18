@@ -27,7 +27,8 @@ import android.support.v4.view.ViewPager;
  */
 public abstract class AbstractPageChangeListener implements ViewPager.OnPageChangeListener {
 
-    @Override public abstract void onPageSelected(int position);
+    @Override
+    public abstract void onPageSelected(int position);
 
 
     @Override
@@ -36,7 +37,8 @@ public abstract class AbstractPageChangeListener implements ViewPager.OnPageChan
     }
 
 
-    @Override public void onPageScrollStateChanged(int state) {
+    @Override
+    public void onPageScrollStateChanged(int state) {
 
     }
 }

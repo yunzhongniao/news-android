@@ -70,7 +70,8 @@ public class ErrorHandlers {
 
     public static Consumer<Throwable> displayErrorConsumer(final Context context) {
         return new Consumer<Throwable>() {
-            @Override public void accept(@NonNull Throwable throwable) {
+            @Override
+            public void accept(@NonNull Throwable throwable) {
                 displayError(context, throwable);
             }
         };

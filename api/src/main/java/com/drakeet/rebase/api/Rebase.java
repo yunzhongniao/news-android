@@ -38,7 +38,8 @@ import retrofit2.http.Query;
  */
 public interface Rebase {
 
-    @GET("categories/{owner}") Flowable<List<Category>> categories(@Path("owner") String owner);
+    @GET("categories/{owner}")
+    Flowable<List<Category>> categories(@Path("owner") String owner);
 
     @GET("categories/{owner}/{category}/feeds")
     Flowable<List<Feed>> feeds(

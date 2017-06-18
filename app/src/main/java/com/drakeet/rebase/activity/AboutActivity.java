@@ -51,8 +51,10 @@ public class AboutActivity extends AbsAboutActivity {
     }
 
 
-    @SuppressWarnings("deprecation") @SuppressLint("SetTextI18n")
-    @Override protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
+    @SuppressWarnings("deprecation")
+    @SuppressLint("SetTextI18n")
+    @Override
+    protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
         setHeaderContentColor(getResources().getColor(R.color.textColorPrimary));
         setNavigationIcon(R.drawable.web_ic_close_black_24dp);
         icon.setImageResource(R.drawable.ic_rebase_flat_w192);
@@ -62,7 +64,8 @@ public class AboutActivity extends AbsAboutActivity {
 
 
     @SuppressWarnings("SpellCheckingInspection")
-    @Override protected void onItemsCreated(@NonNull Items items) {
+    @Override
+    protected void onItemsCreated(@NonNull Items items) {
         share = getString(R.string.share);
         // @formatter:off
 
@@ -100,7 +103,8 @@ public class AboutActivity extends AbsAboutActivity {
     }
 
 
-    @Override protected void onActionClick(View view) {
+    @Override
+    protected void onActionClick(View view) {
         TextView action = (TextView) view;
         if (action.getText().equals(share)) {
             onClickShare();
@@ -124,7 +128,8 @@ public class AboutActivity extends AbsAboutActivity {
     }
 
 
-    @Override public void finish() {
+    @Override
+    public void finish() {
         super.finish();
         overridePendingTransition(0, 0);
     }

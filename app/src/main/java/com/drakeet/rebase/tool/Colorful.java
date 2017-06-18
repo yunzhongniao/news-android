@@ -49,7 +49,8 @@ public class Colorful {
     }
 
 
-    @SuppressWarnings("WeakerAccess") public class Theme {
+    @SuppressWarnings("WeakerAccess")
+    public class Theme {
 
         String styleName;
 
